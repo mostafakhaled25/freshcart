@@ -98,6 +98,9 @@ return (
                 <p className="font-medium"> Your Cart</p>
               </TooltipContent>
             </Tooltip>
+                          <Link href="/profile" className="text-gray-700 dark:text-white hover:text-blue-500 transition-colors">
+    <User className="cursor-pointer" size={24} />
+  </Link>
 
 
             <>
@@ -114,9 +117,6 @@ return (
 
                           <div className="flex p-3  items-center gap-5">
                 <Moon className="cursor-pointer text-gray-700 dark:text-yellow-400 " onClick={() => { theme == "light" ? setTheme("dark") : setTheme("light") }} />
-                <Link href="/profile" className="text-gray-700 dark:text-white hover:text-blue-500 transition-colors">
-    <User className="cursor-pointer" size={24} />
-  </Link>
           <span className="md:hidden text-2xl font-semibold dark:text-white" onClick={() => setOpen(!open)}>
             <Tooltip>
               <TooltipTrigger><i className="fa-solid fa-bars cursor-pointer"></i></TooltipTrigger>
