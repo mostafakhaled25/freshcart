@@ -86,9 +86,9 @@ export default function Profile() {
     
 
       <div className="space-y-6 w-[80%]">
-        <div className="flex justify-between items-center">
-          <h2 className="text-xl font-bold text-gray-800 dark:text-white flex items-center gap-2">
-            <i className="fa-solid fa-map-location-dot text-emerald-500 p-8"></i>
+        <div className="flex justify-between items-center p-3">
+          <h2 className="text-sm font-bold text-gray-800 dark:text-white flex items-center gap-2">
+            <i className="fa-solid fa-map-location-dot text-emerald-500"></i>
             My Addresses
           </h2>
           <Link href="/addaddress" className="text-sm font-bold text-emerald-600 hover:text-emerald-700 flex items-center gap-1 transition-colors">
@@ -96,7 +96,7 @@ export default function Profile() {
           </Link>
         </div>
 
-<div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6 p-8">
+<div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6 p-4">
   {addresses?.map((address:Address) => (
     <div 
       key={address._id} 

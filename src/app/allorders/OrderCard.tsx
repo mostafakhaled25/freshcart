@@ -24,7 +24,7 @@ export default function OrderCard({ order } : OrderCardProps) {
     <div className="mb-6 max-w-4xl mx-auto bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-2xl shadow-sm overflow-hidden font-sans">
       
       {/* Header Section */}
-      <div className="p-5 md:p-6 flex flex-wrap items-center justify-between gap-4">
+      <div className="p-2 md:p-6 flex flex-wrap items-center justify-between gap-4">
         <div className="flex items-center gap-4">
           {/* Image Stack Preview */}
           <div className="relative w-16 h-16 bg-gray-100 dark:bg-slate-800 rounded-xl flex items-center justify-center border border-gray-200 dark:border-slate-700">
@@ -37,7 +37,7 @@ export default function OrderCard({ order } : OrderCardProps) {
             />
             {order.cartItems.length > 1 && (
               <span className="absolute -top-2 -right-2 bg-indigo-600 text-white text-[10px] font-bold w-6 h-6 rounded-full flex items-center justify-center border-2 border-white dark:border-slate-900">
-                +{order.cartItems.length - 1}
+                +{order.cartItems.length }
               </span>
             )}
           </div>
@@ -54,10 +54,8 @@ export default function OrderCard({ order } : OrderCardProps) {
               </span>
             </div>
             <h3 className="text-lg font-extrabold text-slate-800 dark:text-slate-100 tracking-tight"># {order._id.slice(-6).toUpperCase()}</h3>
-            <div className="flex items-center gap-3 text-slate-400 dark:text-slate-500 text-xs mt-1 font-medium">
-              <span>{formattedDate}</span>
-              <span className="text-slate-200 dark:text-slate-700">|</span>
-              <span>{order.cartItems.length} items</span>
+            <div className="flex items-center gap-2 text-slate-400 dark:text-slate-500 text-xs mt-1 font-medium">
+              <span className="">{formattedDate}</span>
               <span className="text-slate-200 dark:text-slate-700">|</span>
               <span className="text-indigo-500 dark:text-indigo-400 font-semibold">{order.shippingAddress?.city}</span>
             </div>
@@ -95,7 +93,7 @@ export default function OrderCard({ order } : OrderCardProps) {
                 {order.cartItems.map((item) => (
                   <div key={item._id} className="bg-white dark:bg-slate-800 p-4 rounded-2xl border border-slate-100 dark:border-slate-700 flex items-center justify-between shadow-sm">
                     <div className="flex items-center gap-4">
-                      <Image src={item.product.imageCover} className="w-14 h-14 object-cover rounded-lg" alt={item.product.title} />
+                      <Image width={50} height={50} src={item.product.imageCover} className="w-14 h-14 object-cover rounded-lg" alt={item.product.title} />
                       <div>
                         <h5 className="text-sm font-bold text-slate-800 dark:text-slate-200 line-clamp-1">{item.product.title}</h5>
                         <p className="text-xs font-bold text-indigo-500 mt-1">{item.count} × {item.price} EGP</p>

@@ -74,7 +74,7 @@ return (
             <Tooltip>
               <TooltipTrigger> 
                 {session ? <Link href="/wishlist" className="relative p-2">
-                  <i className="fa-regular fa-heart text-2xl text-gray-700 dark:text-gray-200"></i>
+                  <i className="fa-regular fa-heart text-[18px] lg:text-2xl text-gray-700 dark:text-gray-200"></i>
                   {itemsWish > 0 && <span className="absolute top-0 right-0 flex h-5 w-5 items-center justify-center rounded-full bg-green-600 text-[10px] font-bold text-white outline-2 outline-white">
                     {itemsWish}
                   </span>}
@@ -88,7 +88,7 @@ return (
             <Tooltip>
               <TooltipTrigger>
                 {session ? <Link href="/cart" className="relative p-2">
-                  <i className="fa-solid fa-cart-arrow-down text-2xl text-gray-700 dark:text-gray-200"></i>
+                  <i className="fa-solid fa-cart-arrow-down text-[18px] lg:text-2xl text-gray-700 dark:text-gray-200"></i>
                   {countCart > 0 && <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-green-600 text-[10px] font-bold text-white border-2 border-white">
                     {countCart}
                   </span>}
@@ -99,8 +99,8 @@ return (
               </TooltipContent>
             </Tooltip>
                           <Link href="/profile" className="text-gray-700 dark:text-white hover:text-blue-500 transition-colors">
-    <User className="cursor-pointer" size={24} />
-  </Link>
+         <User className="cursor-pointer lg:text-2xl " size={22} />
+               </Link>
 
 
             <>
@@ -116,8 +116,8 @@ return (
           </>}
 
                           <div className="flex p-3  items-center gap-5">
-                <Moon className="cursor-pointer text-gray-700 dark:text-yellow-400 " onClick={() => { theme == "light" ? setTheme("dark") : setTheme("light") }} />
-          <span className="md:hidden text-2xl font-semibold dark:text-white" onClick={() => setOpen(!open)}>
+                <Moon className="cursor-pointer lg:text-2xl text-gray-700 dark:text-yellow-400 " size={22} onClick={() => { theme == "light" ? setTheme("dark") : setTheme("light") }} />
+          <span className="md:hidden text-2xl font-semibold dark:text-white z-40" onClick={() => setOpen(!open)}>
             <Tooltip>
               <TooltipTrigger><i className="fa-solid fa-bars cursor-pointer"></i></TooltipTrigger>
               <TooltipContent>
@@ -164,11 +164,11 @@ return (
             </div>
           </> : <div>
             <div className="flex justify-between items-center">
-              <div className="flex justify-center items-center bg-slate-200 dark:bg-slate-800 dark:text-white px-2 py-1 rounded-full shadow-sm font-medium">
+              <div className="flex justify-center text-xs items-center bg-slate-200 dark:bg-slate-800 dark:text-white px-2 py-1 rounded-full shadow-sm font-medium">
                 Welcome {session?.user?.name} 
               </div>
-              <span onClick={logOut} className="cursor-pointer text-gray-600 dark:text-gray-300 font-semibold hover:text-black dark:hover:text-white transition-all duration-300">
-                SignOut <i className="fa-solid fa-arrow-right-from-bracket"></i>
+              <span onClick={logOut} className="text-xs cursor-pointer text-gray-600 dark:text-gray-300 font-semibold hover:text-black dark:hover:text-white transition-all duration-300">
+                SignOut <i className="fa-solid fa-arrow-right-from-bracket text-xs"></i>
               </span>
  
 
