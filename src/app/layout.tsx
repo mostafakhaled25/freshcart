@@ -1,6 +1,15 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Navbar from "./_components/Navbar/Navbar";
+import "../../node_modules/@fortawesome/fontawesome-free/css/all.min.css"
+import { Toaster } from "sonner";
+import MySessionProvider from './../MySessionProvider/MySessionProvider';
+import { WishContextProvider } from "@/context/WishlistContext";
+import { CartContextProvider } from "@/context/CartContext";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { ThemeProvider } from "next-themes";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,11 +32,55 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html suppressHydrationWarning lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased dark:bg-slate-900`}
+        suppressHydrationWarning={true}
       >
+         <ThemeProvider attribute={"class"} defaultTheme="light">
+           <TooltipProvider>
+
+   <MySessionProvider>
+    <WishContextProvider>
+
+      <CartContextProvider>
+       <Navbar/>
         {children}
+        <Toaster
+          position="top-right"
+          richColors
+          
+          toastOptions={{
+            classNames: {
+              success: "bg-emerald-600 text-white border-emerald-700",
+              error: "bg-red-600 text-white border-red-700",
+              warning: "bg-yellow-500 text-black",
+              info: "bg-blue-600 text-white",
+
+              title: "font-semibold",
+              description: "text-sm opacity-90",
+    
+            },
+          }}
+        />
+    </CartContextProvider>
+    </WishContextProvider>
+    
+          
+      </MySessionProvider>
+  
+
+
+ 
+
+  </TooltipProvider>
+         </ThemeProvider>
+
+  
+
+
+
+   
       </body>
     </html>
   );
