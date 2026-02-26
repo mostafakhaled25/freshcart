@@ -39,6 +39,6 @@ export const config = {
     "/changepassword",
     "/profile",
     "/updatedata",
-    "/addaddress", // تأكد من إضافة / في البداية هنا
+    "/addaddress",     
   ],
 };

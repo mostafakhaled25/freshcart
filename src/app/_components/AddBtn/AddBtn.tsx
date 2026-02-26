@@ -21,7 +21,7 @@ export default function AddBtn({id} : {id:string}) {
            position : "top-center"
         });
      } else {
-        toast.error(res.message , {
+        toast.error("You should be logged in first" , {
            duration : 3000 , 
            position : "top-center"
         });
