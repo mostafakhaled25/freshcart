@@ -208,6 +208,8 @@ return (
                                             <td className="px-6 py-4">
                                                 <div className="flex items-center gap-4">
                                                     <Image
+                                                      width={50}
+                                                      height={50}
                                                         src={prod.product.imageCover}
                                                         className="w-20 h-20 object-cover rounded-lg border dark:border-slate-700"
                                                         alt={prod.product.title}
@@ -267,6 +269,8 @@ return (
                                 <div key={prod.product.id} className="p-4 flex flex-col gap-4">
                                     <div className="flex gap-4">
                                         <Image
+                                            width={50}
+                                            height={50}
                                             src={prod.product.imageCover}
                                             className="w-24 h-24 object-cover rounded-xl border dark:border-slate-700"
                                             alt={prod.product.title}

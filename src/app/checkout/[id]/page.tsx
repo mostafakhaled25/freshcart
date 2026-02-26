@@ -41,6 +41,8 @@ export default function Checkout() {
         if (res.status === "success") {
           toast.success("Redirecting to payment gateway...");
           setCountCart(0)
+           router.push(res.session.url)
+
 
 
         } else {

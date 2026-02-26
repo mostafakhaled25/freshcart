@@ -160,6 +160,8 @@ export default function Wislist() {
                                 <div key={prod.id} className="p-4 flex flex-col gap-4">
                                     <div className="flex gap-4">
                                         <Image
+                                            width={50}
+                                            height={50}
                                             src={prod.imageCover}
                                             className="w-24 h-24 object-cover rounded-xl border dark:border-slate-700"
                                             alt={prod.title}

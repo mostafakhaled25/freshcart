@@ -74,8 +74,8 @@ return (
             <Tooltip>
               <TooltipTrigger> 
                 {session ? <Link href="/wishlist" className="relative p-2">
-                  <i className="fa-regular fa-heart text-[18px] lg:text-2xl text-gray-700 dark:text-gray-200"></i>
-                  {itemsWish > 0 && <span className="absolute top-0 right-0 flex h-5 w-5 items-center justify-center rounded-full bg-green-600 text-[10px] font-bold text-white outline-2 outline-white">
+                  <i className="fa-regular fa-heart mt-1 text-xl lg:text-2xl text-gray-700 dark:text-gray-200"></i>
+                  {itemsWish > 0 && <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-green-600 text-[10px] font-bold text-white border-2 border-white">
                     {itemsWish}
                   </span>}
                 </Link> : ""}
@@ -88,7 +88,7 @@ return (
             <Tooltip>
               <TooltipTrigger>
                 {session ? <Link href="/cart" className="relative p-2">
-                  <i className="fa-solid fa-cart-arrow-down text-[18px] lg:text-2xl text-gray-700 dark:text-gray-200"></i>
+                  <i className="fa-solid fa-cart-arrow-down mt-1 text-xl lg:text-2xl text-gray-700 dark:text-gray-200"></i>
                   {countCart > 0 && <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-green-600 text-[10px] font-bold text-white border-2 border-white">
                     {countCart}
                   </span>}
@@ -99,7 +99,7 @@ return (
               </TooltipContent>
             </Tooltip>
                           <Link href="/profile" className="text-gray-700 dark:text-white hover:text-blue-500 transition-colors">
-         <User className="cursor-pointer lg:text-2xl " size={22} />
+         <User className="cursor-pointer lg:text-2xl " size={24} />
                </Link>
 
 

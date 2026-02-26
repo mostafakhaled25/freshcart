@@ -12,7 +12,7 @@ export default function MainSlider() {
   return <>
   
   <div className="container w-[85%] lg:w-[80%] mx-auto my-6 flex">
-   <div className="w-8/12 lg:w-3/4">
+   <div className="w-8/12 lg:w-3/4 ]">
    
     <Swiper
       spaceBetween={0}
@@ -24,17 +24,19 @@ export default function MainSlider() {
       
 
     >
-      <SwiperSlide> <Image priority src={img5} className="w-full object-center h-50 lg:h-100" alt=""/></SwiperSlide>
-      <SwiperSlide> <Image priority src={img3} className="w-full object-center  h-50 lg:h-100" alt=""/></SwiperSlide>
-      <SwiperSlide> <Image priority src={img4} className="w-full object-center  h-50 lg:h-100" alt=""/></SwiperSlide>
+      <SwiperSlide> <Image priority src={img5} className="w-full object-center  " alt=""/></SwiperSlide>
+      <SwiperSlide> <Image priority  src={img3} className="w-full object-center " alt=""/></SwiperSlide>
+      <SwiperSlide> <Image priority  src={img4} className="w-full object-center " alt=""/></SwiperSlide>
      
 
     </Swiper>
   
    </div>
-   <div className="w-6/12 lg:w-1/4">
-   <Image priority src={img3} className="w-full object-center h-25lg:h-50" alt=""/>
-   <Image priority src={img4} className="w-full object-center  h-25lg:h-50" alt=""/>
+   <div className="w-6/12  ">
+    <Image priority src={img5} className=" w-full object-center  " alt=""/>
+   <Image priority src={img3} className="w-full object-center " alt=""/>
+   <Image priority src={img4} className="hidden lg:block w-full object-center " alt=""/>
+ 
    </div>
   </div>
   

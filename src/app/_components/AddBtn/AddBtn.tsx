@@ -1,42 +1,50 @@
 "use client"
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react' // ضفنا useState
 import { Button } from '@/components/ui/button';
 import { addToCart } from '@/CartActions/addToCart.action';
 import { toast } from 'sonner';
 import { CartContext } from '@/context/CartContext';
 
-
 export default function AddBtn({id} : {id:string}) {
-  
    const {countCart , setCountCart} = useContext(CartContext)!
-
-
+   const [isSubmitting, setIsSubmitting] = useState(false);
 
    async function addProductTocart(id:string) {
-   const res = await addToCart(id)
-     setCountCart(countCart + 1)
-
-   
-   
-   if(res.status == "success"){
-      toast.success(res.message , {
-               duration : 3000 , 
-               position : "top-center"
-               
-             })
-   }else{
-       toast.error(res.message , {
-               duration : 3000 , 
-               position : "top-center"
-               
-             })
-   }
-   
+     setIsSubmitting(true); 
+     const res = await addToCart(id);
+     
+     if(res.status == "success"){
+        setCountCart(countCart + 1);
+         setIsSubmitting(false);   
+        toast.success(res.message , {
+           duration : 3000 , 
+           position : "top-center"
+        });
+     } else {
+        toast.error(res.message , {
+           duration : 3000 , 
+           position : "top-center"
+        });
+         setIsSubmitting(false);   
+     }
+    
    }
 
   return (
     <div>
-      <Button onClick={()=>addProductTocart(id)} className='bg-emerald-600 hover:bg-emerald-700 w-full cursor-pointer'>Add To Cart</Button>
+      <Button 
+        disabled={isSubmitting}     
+        onClick={() => addProductTocart(id)} 
+        className="cursor-pointer w-full py-5 bg-emerald-600 text-white font-bold rounded-2xl hover:bg-emerald-700 transition-all text-lg"
+      >
+        {isSubmitting ? (
+          <span className="flex items-center gap-2">
+            <span className="animate-pulse">Adding to cart....</span>
+          </span>
+        ) : (
+          "Add To Cart"
+        )}
+      </Button>
     </div>
   )
 }
