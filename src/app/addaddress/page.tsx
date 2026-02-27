@@ -49,7 +49,7 @@ export default function AddAddress() {
             <i className="fa-solid fa-map-location-dot text-white text-2xl"></i>
           </div>
         </div>
-        <h1 className="text-3xl font-black text-gray-800 dark:text-white">Add New Address</h1>
+        <h1 className="text-3xl font-black text-gray-700 dark:text-white">Add New Address</h1>
         <p className="text-gray-500">Add a new delivery address to your account.</p>
       </div>
 
@@ -118,7 +118,7 @@ export default function AddAddress() {
           type="submit"
           className="cursor-pointer w-full py-3 bg-green-600 text-white font-bold rounded-2xl hover:bg-green-700 transition-all"
         >
-          {isSubmitting ? "Adding Address..." : "Add Address"}
+          {isSubmitting ? "Adding Address.." : "Add Address"}
         </Button>
       </form>
     </div>
