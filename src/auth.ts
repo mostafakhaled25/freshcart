@@ -45,14 +45,12 @@ export const authOptions: NextAuthOptions = {
 
     callbacks: {
         async jwt({ token, user, trigger, session }) {
-            // يتم تنفيذه عند تسجيل الدخول فقط
             if (user) {
                 token.id = user.id;
                 token.user = user.user;
                 token.token = user.token;
             }
 
-            // تحديث البيانات يدوياً إذا استخدمت update()
             if (trigger === "update" && session) {
                 token.user = { ...token.user, ...session.user };
             }
@@ -61,17 +59,15 @@ export const authOptions: NextAuthOptions = {
         },
 
         async session({ session, token }) {
-            // هنا نمرر البيانات من الـ JWT إلى الـ Session اللي بيشوفها الـ Client
             if (token) {
                 session.user = {
                     ...token.user,
-                    id: token.id // دمج الـ id مع بيانات المستخدم
+                    id: token.id 
                 };
                 session.token = token.token;
             }
             return session;
         }
     },
-    // يفضل إضافة secret لتأمين التوكن
     secret: process.env.NEXTAUTH_SECRET,
 };

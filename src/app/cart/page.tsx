@@ -18,16 +18,17 @@ export default function Cart() {
     const [currentId, setcurrentId] = useState('');
     const [disabaledUbdateBtn, setdisabaledUbdateBtn] = useState(false);
     const [carId, setcarId] = useState("");
+     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const {countCart , setCountCart} = useContext(CartContext)!
+    const { countCart, setCountCart } = useContext(CartContext)!
 
 
-    async function removeCartItemFromProduct(id : string) {
+    async function removeCartItemFromProduct(id: string) {
         setdisableflag(true)
         setdisabaledUbdateBtn(true)
         const res = await removeCartItem(id)
 
-    
+
         if (res.status == "success") {
             setproducts(res.data.products)
 
@@ -38,8 +39,8 @@ export default function Cart() {
                 position: "top-center"
             })
 
-            let sum = 0 
-            res.data.products.forEach((product : ProductCart) => {
+            let sum = 0
+            res.data.products.forEach((product: ProductCart) => {
                 sum += product.count
             });
             setCountCart(sum)
@@ -51,7 +52,7 @@ export default function Cart() {
 
             })
             setdisabaledUbdateBtn(false)
-             setdisableflag(false)
+            setdisableflag(false)
         }
 
     }
@@ -62,8 +63,8 @@ export default function Cart() {
 
         const res = await getUserCart()
 
-          setcarId(res.cartId);
-        
+        setcarId(res.cartId);
+
 
 
         if (res.status == "success") {
@@ -72,10 +73,10 @@ export default function Cart() {
         } else {
             setisloading(false)
         }
-    
+
     }
 
-    async function updateCartProduct(id: string, count: string , assign:string) {
+    async function updateCartProduct(id: string, count: string, assign: string) {
         setdisableflag(true)
         setdisabaledUbdateBtn(true)
         setupdateloading(true)
@@ -88,14 +89,14 @@ export default function Cart() {
                 duration: 3000,
                 position: "top-center"
             })
-             setdisabaledUbdateBtn(false)
-             setdisableflag(false)
+            setdisabaledUbdateBtn(false)
+            setdisableflag(false)
 
-             if (assign == "-") {
+            if (assign == "-") {
                 setCountCart(countCart - 1)
-             }else if (assign == "+") {
-                 setCountCart(countCart + 1)
-             }
+            } else if (assign == "+") {
+                setCountCart(countCart + 1)
+            }
 
 
         } else {
@@ -105,41 +106,42 @@ export default function Cart() {
 
             })
             setupdateloading(false)
-             setdisabaledUbdateBtn(false)
-             setdisableflag(false)
+            setdisabaledUbdateBtn(false)
+            setdisableflag(false)
         }
 
 
     }
 
-     async function clearAllProduct() {
-
-      const res = await clearCart()
-
-
+    async function clearAllProduct() {
+        const res = await clearCart()
         if (res.message == "success") {
-             toast.success("All Products were deleted successfully ", {
+            toast.success("All Products were deleted successfully ", {
                 duration: 3000,
                 position: "top-center"
             })
             setproducts([])
             setCountCart(0)
 
-        } 
+        }
 
     }
+
+    async function handleCheckout() {
+    setIsSubmitting(true);
+}
 
 
 
     useEffect(() => {
-       function flag() {
-         getUserCartProduct()
-       }
-       flag()
+        function flag() {
+            getUserCartProduct()
+        }
+        flag()
 
     }, [])
 
-return (
+    return (
         <>
             {isloading ? (
                 <div className="flex justify-center items-center h-screen dark:bg-slate-900">
@@ -153,22 +155,22 @@ return (
                 <div className="w-[95%] lg:w-[85%] mx-auto mt-10 mb-10">
 
                     <div className="w-[90%] max-w-7xl mx-auto flex justify-between mb-12 pb-8 border-b border-gray-100 dark:border-slate-800">
-                        
+
                         {/* Left Side: Dynamic Icon & Title */}
                         <div className="flex items-center gap-6 ">
-                            
+
                             {/* Cart Icon with Notification Badge */}
                             <div className="relative group">
                                 <div className="flex items-center justify-center w-12 h-12 lg:w-16 lg:h-16 bg-green-500 text-white rounded-2xl shadow-xl transform group-hover:rotate-3 transition-transform duration-300">
                                     <i className="fa-solid fa-cart-shopping text-2xl"></i>
                                 </div>
-                                
+
                                 {/* Product Count Badge */}
                                 <span className="absolute -top-3 -right-3 flex h-6 min-w-5 lg:h-8 lg:min-w-8 px-2 items-center text-white justify-center bg-blue-500 text-xs font-black rounded-full border-4 border-blue-500 dark:border-blue-600 shadow-lg animate-bounce-short">
                                     {products.length}
                                 </span>
                             </div>
-                            
+
                             <div>
                                 <h2 className="hidden lg:block text-2xl lg:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
                                     Your Cart
@@ -190,7 +192,7 @@ return (
                     </div>
 
                     <div className="relative overflow-hidden shadow-xl rounded-2xl border border-gray-100 dark:border-slate-800 bg-white dark:bg-slate-900">
-                        
+
                         {/* Desktop Table - Visible on MD and up */}
                         <div className="hidden md:block overflow-x-auto">
                             <table className="w-full text-sm text-left text-gray-600 dark:text-gray-400">
@@ -208,8 +210,8 @@ return (
                                             <td className="px-6 py-4">
                                                 <div className="flex items-center gap-4">
                                                     <Image
-                                                      width={50}
-                                                      height={50}
+                                                        width={50}
+                                                        height={50}
                                                         src={prod.product.imageCover}
                                                         className="w-20 h-20 object-cover rounded-lg border dark:border-slate-700"
                                                         alt={prod.product.title}
@@ -329,10 +331,26 @@ return (
                                 {products?.reduce((acc, curr: ProductCart) => acc + (curr.price * curr.count), 0)} <span className="text-sm">EGP</span>
                             </p>
                         </div>
-                        <button className="group w-full md:w-auto px-10 py-4 bg-emerald-500 hover:bg-emerald-400 text-gray-900 font-black rounded-xl transition-all flex items-center justify-center gap-3">
-                           <Link href={`/checkout/${carId}`}> Checkout Now</Link>
-                            <i className="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-                        </button>
+                    <Link 
+        href={`/checkout/${carId}`} 
+        onClick={handleCheckout}
+        className={`group w-full md:w-auto px-10 py-4 font-black rounded-xl transition-all flex items-center justify-center gap-3 
+            ${isSubmitting 
+                ? "bg-emerald-800 cursor-not-allowed pointer-events-none" 
+                : "bg-emerald-500 hover:bg-emerald-400 text-gray-900"}`}
+    >
+        {isSubmitting ? (
+            <span className="flex items-center gap-2 ">
+                <i className="fas fa-circle-notch fa-spin"></i>
+                <span className="animate-pulse">Processing...</span>
+            </span>
+        ) : (
+            <>
+                <span>Checkout Now</span>
+                <i className="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+            </>
+        )}
+    </Link>
                     </div>
                 </div>
             ) : (
@@ -348,7 +366,7 @@ return (
                     </div>
                     <h2 className="text-3xl font-black text-gray-800 dark:text-white mb-3">Your cart is empty</h2>
                     <p className="text-gray-500 dark:text-gray-400 max-w-xs mb-10 leading-relaxed">
-                         Looks like you haven&apos;t added anything yet. Start shopping to fill it with awesome deals!
+                        Looks like you haven&apos;t added anything yet. Start shopping to fill it with awesome deals!
                     </p>
                     <Link
                         href={"/"}
