@@ -164,7 +164,7 @@ return (
             </div>
           </> : <div>
             <div className="flex justify-between items-center">
-              <div className="flex justify-center text-xs items-center bg-slate-200 dark:bg-slate-800 dark:text-white px-2 py-1 rounded-full shadow-sm font-medium">
+              <div className="md:hidden flex justify-center text-xs items-center bg-slate-200 dark:bg-slate-800 dark:text-white px-2 py-1 rounded-full shadow-sm font-medium">
                 Welcome {session?.user?.name} 
               </div>
               <span onClick={logOut} className="text-xs cursor-pointer text-gray-600 dark:text-gray-300 font-semibold hover:text-black dark:hover:text-white transition-all duration-300">
