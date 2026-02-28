@@ -123,6 +123,8 @@ export default function Wislist() {
                                             <td className="px-6 py-4">
                                                 <div className="flex items-center gap-4">
                                                     <Image
+                                                        width={25}
+                                                        height={25}
                                                         src={prod.imageCover}
                                                         className="w-20 h-20 object-cover rounded-lg border dark:border-slate-700"
                                                         alt={prod.title}
@@ -160,17 +162,17 @@ export default function Wislist() {
                                 <div key={prod.id} className="p-4 flex flex-col gap-4">
                                     <div className="flex gap-4">
                                         <Image
-                                            width={50}
-                                            height={50}
+                                            width={25}
+                                            height={25}
                                             src={prod.imageCover}
-                                            className="w-24 h-24 object-cover rounded-xl border dark:border-slate-700"
+                                            className="w-12 h-12 object-cover rounded-xl border dark:border-slate-700"
                                             alt={prod.title}
                                         />
                                         <div className="flex-1">
                                             <h3 className="font-bold text-gray-800 dark:text-slate-200 leading-tight line-clamp-2">{prod.title}</h3>
                                             <p className="text-emerald-600 dark:text-emerald-400 font-bold mt-1">{prod.price} EGP</p>
                                         </div>
-                                        <div className='flex flex-col justify-between items-center'>
+                                        <div className='flex flex-col justify-between items-center gap-4'>
                                             <button
                                                 onClick={() => removeWishProduct(prod.id)}
                                                 disabled={disableflag}
@@ -178,7 +180,7 @@ export default function Wislist() {
                                             >
                                                 <i className="fa-solid fa-trash-can"></i>
                                             </button>
-                                            <AddBtn id={prod.id} />
+                                           <AddBtn id={prod.id}  />
                                         </div>
                                     </div>
                                 </div>

@@ -37,7 +37,7 @@ export default function Navbar() {
   }
 
 return (
-    <nav className="bg-slate-100 dark:bg-slate-800 fixed top-0 start-0 end-0 z-20 transition-colors duration-300">
+    <nav className=" bg-slate-100 dark:bg-slate-800 fixed top-0 start-0 end-0 z-20 transition-colors duration-300">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-14">
 

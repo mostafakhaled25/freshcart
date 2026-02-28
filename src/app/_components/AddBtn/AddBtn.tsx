@@ -39,7 +39,7 @@ export default function AddBtn({id} : {id:string}) {
       >
         {isSubmitting ? (
           <span className="flex items-center gap-2">
-            <span className="animate-pulse">Adding to cart....</span>
+            <span className="animate-pulse">Adding.....</span>
           </span>
         ) : (
           "Add To Cart"

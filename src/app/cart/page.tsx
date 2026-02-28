@@ -271,10 +271,10 @@ export default function Cart() {
                                 <div key={prod.product.id} className="p-4 flex flex-col gap-4">
                                     <div className="flex gap-4">
                                         <Image
-                                            width={50}
-                                            height={50}
+                                            width={25}
+                                            height={25}
                                             src={prod.product.imageCover}
-                                            className="w-24 h-24 object-cover rounded-xl border dark:border-slate-700"
+                                            className="w-12 h-12 object-cover rounded-xl border dark:border-slate-700"
                                             alt={prod.product.title}
                                         />
                                         <div className="flex-1">

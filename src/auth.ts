@@ -27,13 +27,11 @@ export const authOptions: NextAuthOptions = {
                 const payload = await response.json();
 
                 if (payload.message === "success") {
-                    // استخراج الـ id من الـ token المشفر
                     const decoded: { id: string } = jwtDecode(payload.token);
                     
-                    // نرجع الكائن اللي هيستلمه الـ jwt callback باسم 'user'
                     return {
                         id: decoded.id,
-                        user: payload.user, // بيحتوي على name, email, role
+                        user: payload.user, 
                         token: payload.token
                     };
                 } else {
